@@ -4,6 +4,8 @@ Implemented Epsilon Greedy, UCB (Upper Confidence Bound), and Thompson sampling 
 ## Bandit Algorithms 
 Bandit algorithms are a class of sequential decision-making algorithms used to solve the multi-armed bandit problem. In this problem, an agent (or decision-maker) is faced with a set of k arms (actions) with unknown reward distributions. The agent's goal is to learn which arms yield the highest rewards and maximize the total reward accumulated over time. 
 
+![1](https://github.com/Sagarnandeshwar/Bandit_Algorithms/blob/main/image/1.png)
+
 The choice of the bandit algorithm depends on the problem context, the level of uncertainty about the arms' reward probabilities, and the trade-off between exploration and exploitation desired by the decision-maker. Some algorithms perform better in specific scenarios, so it's essential to consider the characteristics of the bandit problem when selecting an appropriate algorithm. 
 
 ## Simulation: Bernoulli bandit with k arms 
@@ -51,7 +53,10 @@ Here's a step-by-step explanation of the epsilon-greedy algorithm:
    - Keep track of the rewards obtained from each arm.
    - Update the estimated probability of success for the chosen arm based on the observed reward. This is typically done using some form of average or weighted average of the observed rewards for that arm. 
 
-5. **Repeat steps 2 to 4 for a certain number of iterations or time steps.** 
+5. **Repeat steps 2 to 4 for a certain number of iterations or time steps.**
+
+![2](https://github.com/Sagarnandeshwar/Bandit_Algorithms/blob/main/image/2.png)
+![3](https://github.com/Sagarnandeshwar/Bandit_Algorithms/blob/main/image/3.png)
 
 The epsilon-greedy algorithm balances exploration and exploitation over time. As the algorithm gains more information about the arms through exploration, it gradually shifts towards exploiting the best-performing arms to maximize long-term rewards. 
 
@@ -73,6 +78,8 @@ Here's how the UCB algorithm works:
 
 The UCB algorithm balances exploration and exploitation by selecting arms with a high UCB value. The UCB value is based on the estimated mean reward and the confidence interval, represented by the term sqrt(2 * log(total_pulls) / arm_pulls(i)), which increases as an arm is pulled less frequently. The algorithm encourages exploration of arms with high uncertainty (uncertain mean rewards) while favoring arms with potentially high rewards based on the observed data. 
 
+![4](https://github.com/Sagarnandeshwar/Bandit_Algorithms/blob/main/image/4.png)
+
 Over time, as the algorithm explores different arms and gathers more information, it becomes increasingly confident in its estimates, and the exploitation of promising arms dominates over exploration. 
 
 ## Thompson sampling 
@@ -86,6 +93,10 @@ Here's how the Thompson Sampling algorithm works:
 3. **Pull the chosen arm and observe the reward.**
 4. **Update the posterior distribution:**
    - Based on the observed reward, update the posterior distribution for the chosen arm using Bayesian updating. For example, if the prior distribution is Beta(alpha, beta) and the observed reward is 1 (success) or 0 (failure), the updated posterior distribution becomes Beta(alpha + 1, beta) or Beta(alpha, beta + 1), respectively. 
-5. **Repeat steps 2 to 4 for a certain number of iterations or time steps. **
+5. **Repeat steps 2 to 4 for a certain number of iterations or time steps.**
+
+![5](https://github.com/Sagarnandeshwar/Bandit_Algorithms/blob/main/image/5.png)
 
 The Thompson Sampling algorithm works by maintaining a distribution over the reward probabilities for each arm. The sampling step (Step 2) allows it to explore arms in proportion to their potential performance, as arms with higher expected rewards have a higher chance of being selected. As the algorithm collects more data and updates the posterior distributions, it becomes more confident in its estimates and shifts towards exploiting the arms with higher expected rewards. 
+
+
